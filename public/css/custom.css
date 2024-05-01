@@ -58,15 +58,12 @@ html {
     max-height: 90vh;
 }
 
-
 /*  */
-/* CUST CSS: ABOUT US MODAL */
+/* CUST CSS: MODALS */
 /*  */
-#aboutUsModal{
+.modal {
     z-index: 1102 !important;
 }
-
-
 
 /*  */
 /* CUST CSS: ADD DARKEN BACKGROUND WHILE ABOUT-US MODAL SHOW */
@@ -81,10 +78,6 @@ html {
     z-index: 1101;
 }
 
-
-
-
-
 /* -------------------------------------------------------------------------------------------------- */
 /* -------------------------------------------- VIEW PORTS ------------------------------------------ */
 /* -------------------------------------------------------------------------------------------------- */
@@ -94,12 +87,10 @@ html {
 /* CUST CSS: LEAFLET MOBILE */
 /*  ------------------------------------  */
 @media (max-width: 1000.98px) {
-    .leaflet-map{
+    .leaflet-map {
         height: 25vh;
     }
-
 }
-
 
 /*  ------------------------------------  */
 /* VIEWPORT: HK TABLET */
@@ -107,23 +98,39 @@ html {
 /*  ------------------------------------  */
 @media (max-width: 1199.98px) {
     /* ABOUT US MODAL */
-    #aboutUsModal{
+    .modal {
         z-index: 1102 !important;
     }
     /* ABOUT US MODAL BACKDROP PART */
     .modal-backdrop.custom-backdrop {
         z-index: 1101;
     }
-
 }
 
+/*  */
+/* CUST DIVIDER CSS */
+/*  */
+.custom-divider {
+    display: flex;
+    align-items: center;
+}
+.divider-icon::before {
+    box-sizing: border-box;
+}
+.divider-icon::after {
+    box-sizing: border-box;
+}
 
+.custom-divider .divider-icon {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #ccc;
+    margin: 0 10px;
+}
 
-
-
-
-
-
+.custom-divider .divider-icon i {
+    display: inline-block;
+}
 
 
 

@@ -52,10 +52,20 @@ function fullscreenFunct() {
 /////////////////////////////////////////////////////////////////////////////////////
 /////    <!-- CUST SCRIPT: ADD DARKEN BACKGROUND WHILE ABOUT-US MODAL SHOW JS -->
 /////////////////////////////////////////////////////////////////////////////////////
-
 var aboutUsModal = document.getElementById("aboutUsModal");
 if (aboutUsModal) {
     aboutUsModal.addEventListener("shown.bs.modal", function () {
+        var modalBackdrop = document.querySelector(".modal-backdrop");
+        modalBackdrop.classList.add("custom-backdrop");
+    });
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+/////    <!-- CUST SCRIPT: ADD DARKEN BACKGROUND WHILE PRIVACY-POLICY MODAL SHOW JS -->
+//////////////////////////////////////////////////////////////////////////////////////////
+var registerPrivacyPolicyModal = document.getElementById("modalPrivacyPolicy");
+if (registerPrivacyPolicyModal) {
+    registerPrivacyPolicyModal.addEventListener("shown.bs.modal", function () {
         var modalBackdrop = document.querySelector(".modal-backdrop");
         modalBackdrop.classList.add("custom-backdrop");
     });
@@ -65,8 +75,13 @@ if (aboutUsModal) {
 // /////    <!-- CUST SCRIPT: SWEAT ALERT JS -->
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ///////// ALERT BY BUTTON: CENTER OF PARENT
-function showAlert(typeAlert = "infoAlert", alertTitle = "Alert Title", alertIcon = "info", alertMsg = "Here is alert msg...") {
-    const btnAlert = document.querySelector("#"+typeAlert); // Based on ID
+function showAlert(
+    typeAlert = "infoAlert",
+    alertTitle = "Alert Title",
+    alertIcon = "info",
+    alertMsg = "Here is alert msg..."
+) {
+    const btnAlert = document.querySelector("#" + typeAlert); // Based on ID
     // General SweatAlert
     if (btnAlert) {
         Swal.fire({
@@ -74,21 +89,19 @@ function showAlert(typeAlert = "infoAlert", alertTitle = "Alert Title", alertIco
             icon: alertIcon,
             text: alertMsg,
             showClass: {
-              popup: 'animate__animated animate__flipInX'
+                popup: "animate__animated animate__flipInX",
             },
             customClass: {
-                confirmButton: 'btn btn-primary me-3 waves-effect waves-light',
+                confirmButton: "btn btn-primary me-3 waves-effect waves-light",
             },
-            confirmButtonText: '<i class="mdi mdi-thumb-up-outline me-2"></i> Okay!',
-            confirmButtonAriaLabel: 'Thumbs up, okay!',
+            confirmButtonText:
+                '<i class="mdi mdi-thumb-up-outline me-2"></i> Okay!',
+            confirmButtonAriaLabel: "Thumbs up, okay!",
             allowOutsideClick: false,
             allowEscapeKey: false,
             didOpen: function () {},
-            didClose: function () {
-
-            }
+            didClose: function () {},
         });
-
     }
 }
 
@@ -96,23 +109,43 @@ function showAlert(typeAlert = "infoAlert", alertTitle = "Alert Title", alertIco
 // /////    <!-- CUST SCRIPT: TOAST JS -->
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ///////// TOAST BY BUTTON: TOP RIGHT OF PARENT
-function showToast(){
+function showToast() {
     var isData = true; // Based on Data Exists
     if (isData) {
         Swal.mixin({
             toast: true,
-            position: 'top-end',
+            position: "top-end",
             showConfirmButton: false,
             timer: 3000,
             timerProgressBar: true,
             didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
+                toast.addEventListener("mouseenter", Swal.stopTimer);
+                toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
         }).fire({
-            icon: 'warning',
-            title: 'TOAST TESTING!'
+            icon: "warning",
+            title: "TOAST TESTING!",
         });
     }
 }
 // ///////// TOAST BY SESSION: TOP RIGHT OF PARENT
+
+
+
+// /////////////////////////////////////////////////////////////////////////////
+// /////    <!-- CUST SCRIPT: REGISTER PRIVACY POLICY JS -->
+// /////////////////////////////////////////////////////////////////////////////
+const signupBtn = document.getElementById("signupBtn");
+const confirmPolicyBtn = document.getElementById("confirmPolicyBtn");
+const termsCheckbox = document.getElementById("terms-conditions");
+termsCheckbox.addEventListener("change", function () {
+    if (termsCheckbox.checked) {
+        signupBtn.disabled = false;
+    } else {
+        signupBtn.disabled = true;
+    }
+});
+confirmPolicyBtn.addEventListener("click", function () {
+    termsCheckbox.checked = true;
+    signupBtn.disabled = false;
+});
