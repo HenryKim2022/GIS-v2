@@ -138,14 +138,22 @@ function showToast() {
 const signupBtn = document.getElementById("signupBtn");
 const confirmPolicyBtn = document.getElementById("confirmPolicyBtn");
 const termsCheckbox = document.getElementById("terms-conditions");
-termsCheckbox.addEventListener("change", function () {
-    if (termsCheckbox.checked) {
-        signupBtn.disabled = false;
-    } else {
-        signupBtn.disabled = true;
+
+if (signupBtn){
+    if (confirmPolicyBtn){
+        if (termsCheckbox){
+            termsCheckbox.addEventListener("change", function () {
+                if (termsCheckbox.checked) {
+                    signupBtn.disabled = false;
+                } else {
+                    signupBtn.disabled = true;
+                }
+            });
+            confirmPolicyBtn.addEventListener("click", function () {
+                termsCheckbox.checked = true;
+                signupBtn.disabled = false;
+            });
+
+        }
     }
-});
-confirmPolicyBtn.addEventListener("click", function () {
-    termsCheckbox.checked = true;
-    signupBtn.disabled = false;
-});
+}
